@@ -1,0 +1,59 @@
+body{
+    font-family: Helvetica;
+}
+
+.container{
+    width: 300px;
+    margin: auto;
+    h1{
+        font-size: 30px;
+        
+        text-align: center;
+        color: crimson;
+        opacity: 0.4;
+    }
+    #todo__form{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    #todo__text{
+        padding-left: 10px;
+        width: 300px;
+        height: 50px;
+        margin: auto;
+    }
+    #todo__list{
+        padding: 0;
+        list-style-type: none;
+        li{
+            display: flex;
+            height: 35px;
+            border-bottom: 1px solid #000;
+            align-items: center;
+        }
+        label{
+            margin: 0 5px 2px 5px;
+            font-size: 22px;
+            color: black;
+            transition: color 0.3s ease-in-out;
+        }
+    }
+    input:checked + label{
+            text-decoration: line-through;
+            color: rgb(138, 138, 138) !important;
+            transition: color 0.3s ease-in-out;
+            
+    }
+    #todo__remove{
+        border: none;
+        background: none;
+        color: crimson;
+    }
+    #todo__remove:hover{
+        cursor: pointer;
+        color: rgb(95, 9, 26);
+        align-items: center;
+    }
+
+}
