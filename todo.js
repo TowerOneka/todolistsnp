@@ -4,9 +4,36 @@ let form = document.querySelector("#todo__form");
 let filter = document.querySelector('#filter');
 let todoList = [];
 let filter__count = 1;
+let toggleAll = document.querySelector('#toggle-all');
 let active__text = document.querySelector('#active__count');
 let active__count = 0;
 let clear__completed = document.querySelector('#clear__completed');
+
+toggleAll.addEventListener('click', () =>{
+    let nonchecked = 0;
+    todoList.forEach((item)=>{
+        if (!item.checked){
+            nonchecked+=1;
+        }
+    });
+    if(nonchecked == 0){
+        todoList.forEach((i)=>{
+            i.checked = !i.checked;
+        });
+    }
+    else{
+        todoList.forEach((item)=>{
+            if (!item.checked){
+                item.checked = !item.checked;
+            }
+        });
+    }
+    localStorage.setItem('todo', JSON.stringify(todoList));
+    todoViewer();
+    nonchecked = 0;
+})
+
+
 
 //Скрипт Todo
 let todoViewer = () =>{
@@ -22,6 +49,12 @@ let todoViewer = () =>{
             active__count +=1;
         }
     });
+    if(active__count == 0 & todoList.length > 0){
+        toggleAll.style.color = '#26de81';
+    }
+    else{
+        toggleAll.style.color = '#778ca3';
+    }
     if(active__count != todoList.length){
         clear__completed.style.opacity = '1';
     }
@@ -95,7 +128,7 @@ form.addEventListener('submit', (e)=>{
         todo: input.value,
         checked: false
     };
-    todoList.push(NewEl);
+    todoList.unshift(NewEl);
     todoViewer();
     localStorage.setItem('todo', JSON.stringify(todoList));
     input.value = '';

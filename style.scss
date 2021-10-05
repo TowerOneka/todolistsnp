@@ -1,5 +1,6 @@
 body{
     font-family: Helvetica;
+    background-color: #f1f2f6;
 }
 p{
     padding: 0;
@@ -8,42 +9,73 @@ p{
 
 .container{
     width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ced6e0;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.15);
     margin: auto;
     h1{
-        font-size: 30px;
+        font-size: 47px;
         
         text-align: center;
-        color: crimson;
+        color: #fc5c65;
         opacity: 0.4;
     }
-    #todo__form{
-        width: 100%;
+    .form{
         display: flex;
-        justify-content: center;
+        align-items: center;
+        #todo__form{
+            flex-basis: 350px;
+            padding-right: 4px;
+        }
+        .toggle-all-button{
+            flex-basis: 32px;
+            width: 100%;
+        }
+        #toggle-all{
+            padding: 0 20px;
+            position: relative;
+            cursor: pointer;
+            color: #778ca3;
+            font-size: 22px;
+            background-color: white;
+            border: none;
+            -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
     }
+    
     #todo__text, .edit{
-        padding-left: 10px;
+        border: 1px solid #ced6e0;
+        border-radius: 2px;
         width: 100%;
+        max-width: 350px;
+        padding: 1px;
         height: 50px;
         margin: auto;
     }
+    #todo__text:focus, .edit:focus{
+        border: 1px solid #0652DD;
+    }
     #todo__list{
         padding: 0;
+        width: 100%;
         list-style-type: none;
         li{
             display: flex;
-            height: 35px;
-            border-bottom: 1px solid #000;
+            position: relative;
+            min-height: 35px;
+            border-bottom: 1px solid #ced6e0;
             align-items: center;
         }
         input[type="checkbox"] + label{
             font-size: 22px;
+            word-break: break-all;
             color: black;
-            -webkit-transition: all 0.3s ease;
-            -moz-transition: all 0.3s ease;
-            -o-transition: all 0.3s ease;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            transition: all 0.3s ease-in-out;
         }
         input[type="checkbox"]:checked + label {
             text-decoration: line-through;
@@ -52,13 +84,15 @@ p{
         
     }
     #todo__remove{
+        top: 0;
         border: none;
+        font-size: 16px;
         background: none;
-        color: crimson;
+        color: #fc5c65;
     }
     #todo__remove:hover{
         cursor: pointer;
-        color: rgb(95, 9, 26);
+        color: #eb3b5a;
         align-items: center;
     }
     .filter{
@@ -80,7 +114,7 @@ p{
         }
         .filter__link.active{
             margin: 0;
-            border: 1px solid gray;
+            border: 1px solid #778ca3;
         }
       }
       .items{
@@ -107,8 +141,9 @@ input[type="checkbox"]:not(:checked)
     position: absolute;
     opacity: 0;
     margin: 0;
+    top: 0;
     width: 20px;
-    height: 20px;
+    height: 35px;
     z-index: 10;
 }
 
@@ -130,7 +165,7 @@ input[type="checkbox"]:not(:checked) + label:before{
     top: 0px;
     width: 18px;
     height: 18px;
-    border: 1px solid #dddddd;
+    border: 1px solid #778ca3;
     background-color: #ffffff;
 }
 
@@ -157,8 +192,8 @@ input[type="checkbox"]:not(:checked) + label:after {
     width: 10px;
     height: 5px;
     border-radius: 1px;
-    border-left: 4px solid #45e145;
-    border-bottom: 4px solid #45e145;
+    border-left: 4px solid #26de81;
+    border-bottom: 4px solid #26de81;
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
